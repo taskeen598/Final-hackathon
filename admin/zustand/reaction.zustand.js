@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
-const domain = "http://localhost:3004";
+// const domain = "http://localhost:3004";
+const domain = "https://final-hackathon-jzvgqqg9y-taskeens-projects.vercel.app";
 
 const ReactionStore = (set) => ({
 

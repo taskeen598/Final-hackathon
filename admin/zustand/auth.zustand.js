@@ -2,7 +2,8 @@ import { create } from "zustand";
 // import useBlogStore from "./blog.zustand";
 import {persist,devtools} from "zustand/middleware"
 
-const domain = "http://localhost:3004";
+// const domain = "http://localhost:3004";
+const domain = "https://final-hackathon-jzvgqqg9y-taskeens-projects.vercel.app";
 // interface AuthState {
 //   token: string;
 //   user: {};

@@ -1,7 +1,6 @@
 import { Controller, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { FakeNewsService } from './fake.news.service';
-import { log } from 'console';
 
 @Controller('fake-news')
 export class FakeNewsController {

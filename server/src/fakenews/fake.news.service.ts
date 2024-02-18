@@ -1,7 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { User } from 'src/auth/schema/user.schemas';
+import { User } from '../auth/schema/user.schemas';
 import { FakeNews } from './schema/fakenews.schema';
 import { Newsdata } from './schema/newsdata.schema';
 import { Reaction } from './schema/reaction.schema';

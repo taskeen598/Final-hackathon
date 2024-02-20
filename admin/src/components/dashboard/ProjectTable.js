@@ -3,13 +3,13 @@ import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
 import React, { useEffect, useState } from "react";
 import useFakeNewsStore from "../../../zustand/fakenews.zustand";
 import Pagination from "./Pagination";
-import FullLayout from "../../../src/layouts/FullLayout";
+import FullLayout from "../../layouts/FullLayout";
 
 const ProjectTables = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const { getAllFakeNews, fakeNews, getTotal } = useFakeNewsStore();
-  const articlesPerPage = 10;
+  const articlesPerPage = 12;
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
 

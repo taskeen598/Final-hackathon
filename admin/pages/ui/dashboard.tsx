@@ -1,71 +1,72 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Col, Row } from "reactstrap";
 import SalesChart from "../../src/components/dashboard/SalesChart";
 import TopCards from "../../src/components/dashboard/TopCards";
 import FullLayout from "../../src/layouts/FullLayout";
 import useFakeNewsStore from '../../zustand/fakenews.zustand';
-// import { redirect } from 'next/dist/server/api-utils';
 import { useRouter } from 'next/router';
 
-const dashboard = () => {
-
-
-    const router = useRouter()
+const Dashboard = () => {
+    const router = useRouter();
     const { getTotalStats, totalCountries, totalLanguages, totalSites, getTotal, getAllFakeNews } = useFakeNewsStore();
 
     useEffect(() => {
-        let user = localStorage.getItem('Auth');
-        user = JSON.parse(user);
-        let isLoggedIn = user?.state?.isLoggedIn
-        if (isLoggedIn) {
-            router.push('/ui/dashboard')
-        } else {
-            router.push('/')
-        }
-        getTotalStats()
-        getAllFakeNews()
-    }, [])
+        getTotalStats();
+        getAllFakeNews();
+    }, []);
 
     return (
-        <div>
+        <div className='bg-white'>
             <FullLayout>
                 <div>
                     {/***Top Cards***/}
                     <Row>
                         <Col sm="6" lg="3">
                             <TopCards
+                                background={"bg-[#D5F3F2]"}
                                 bg="bg-light-success text-success"
                                 title="Total"
                                 subtitle="Total News"
                                 earning={getTotal}
+                                textcolor="text-emerald-500"
+                                subtitlecolor="text-emerald-500"
                                 icon="bi bi-file-break"
                             />
                         </Col>
                         <Col sm="6" lg="3">
                             <TopCards
+                                background={"bg-[#F8DDDD]"}
                                 bg="bg-light-danger text-danger"
                                 title="Total languages"
-                                subtitle="Total languages"
+                                subtitle="Total Languages"
                                 earning={totalLanguages.length}
+                                textcolor="text-red-500"
+                                subtitlecolor="text-red-500"
                                 icon="bi bi-translate"
                             />
                         </Col>
                         <Col sm="6" lg="3">
                             <TopCards
+                                background={"bg-[#F8ECDC]"}
                                 bg="bg-light-warning text-warning"
                                 title="Total Countries"
                                 subtitle="Total Countries"
                                 earning={totalCountries.length}
-                                icon="bi bi-globe-americas"
+                                textcolor="text-yellow-500"
+                                subtitlecolor="text-yellow-500"
+                                icon="bi bi-globe"
                             />
                         </Col>
                         <Col sm="6" lg="3">
                             <TopCards
+                                background={"bg-[#D3EDFA]"}
                                 bg="bg-light-info text-into"
                                 title="Total Source"
-                                subtitle="Total Source"
+                                subtitle="Total URLs"
                                 earning={totalSites.length}
-                                icon="bi bi-diagram-3"
+                                subtitlecolor="text-teal-500"
+                                textcolor="text-teal-500"
+                                icon="bi bi-gear"
                             />
                         </Col>
                     </Row>
@@ -81,7 +82,7 @@ const dashboard = () => {
                 </div>
             </FullLayout>
         </div>
-    )
-}
+    );
+};
 
-export default dashboard
+export default Dashboard;

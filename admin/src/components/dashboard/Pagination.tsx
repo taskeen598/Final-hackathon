@@ -4,7 +4,7 @@ import useFakeNewsStore from "../../../zustand/fakenews.zustand";
 const Pagination = ({ totalPages, setCurrentPage, currentPage }) => {
   const { getAllFakeNews, getTotal } = useFakeNewsStore()
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (page:any) => {
     setCurrentPage(page);
     getAllFakeNews(page)
 
@@ -81,7 +81,7 @@ const Pagination = ({ totalPages, setCurrentPage, currentPage }) => {
         </ul>
       </nav>
       <div className="text-blue-500 font-bold">
-        {`${currentPage} out of ${Math.ceil(getTotal / 10)}`}
+        {`${currentPage} out of ${Math.ceil(getTotal / 12)}`}
       </div>
     </div>
   );

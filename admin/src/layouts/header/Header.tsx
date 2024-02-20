@@ -26,6 +26,38 @@ const Header = ({ showMobmenu }) => {
     setIsOpen(!isOpen);
   };
 
+  
+  const renderClientSideContent = () => {
+    let window:any
+    if (typeof window !== 'undefined') {
+      return (
+        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+          <DropdownToggle color="primary">
+            <div style={{ lineHeight: "0px" }}>
+              <Image
+                src={user1}
+                alt="profile"
+                className="rounded-circle"
+                width="30"
+                height="30"
+              />
+            </div>
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem header>Info</DropdownItem>
+            <DropdownItem>My Account</DropdownItem>
+            <DropdownItem>Edit Profile</DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem>My Balance</DropdownItem>
+            <DropdownItem>Inbox</DropdownItem>
+            <DropdownItem>Logout</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      );
+    }
+    return null;
+  };
+
   return (
     <Navbar color="primary" dark expand="md">
       <div className="d-flex align-items-center">
@@ -75,28 +107,7 @@ const Header = ({ showMobmenu }) => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
-        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle color="primary">
-            <div style={{ lineHeight: "0px" }}>
-              <Image
-                src={user1}
-                alt="profile"
-                className="rounded-circle"
-                width="30"
-                height="30"
-              />
-            </div>
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem header>Info</DropdownItem>
-            <DropdownItem>My Account</DropdownItem>
-            <DropdownItem>Edit Profile</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>My Balance</DropdownItem>
-            <DropdownItem>Inbox</DropdownItem>
-            <DropdownItem>Logout</DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
+        {renderClientSideContent()}
       </Collapse>
     </Navbar>
   );

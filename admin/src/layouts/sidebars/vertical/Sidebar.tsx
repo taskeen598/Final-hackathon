@@ -3,13 +3,15 @@ import { Button, Nav, NavItem } from "reactstrap";
 import Logo from "../../logo/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
-// interface NavigationItem {
-//   title: string;
-//   href: string;
-//   icon: string;
-//   isLogout?: boolean;
-// }
-const navigation = [
+
+interface NavigationItem {
+  title: string;
+  href: string;
+  icon: string;
+  isLogout?: boolean;
+}
+
+const navigation: NavigationItem[] = [
   {
     title: "Dashboard",
     href: "/ui/dashboard",
@@ -32,9 +34,8 @@ const navigation = [
     isLogout: true,
   },
 ];
-// Import statements...
 
-const Sidebar = ({ showMobilemenu }) => {
+const Sidebar: React.FC<{ showMobilemenu: () => void }> = ({ showMobilemenu }) => {
   const router = useRouter();
   const location = router.pathname;
 

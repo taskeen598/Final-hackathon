@@ -1,10 +1,9 @@
-import FullLayout from "../src/layouts/FullLayout";
-import Head from "next/head";
+import { AppProps } from 'next/app';
+import Head from 'next/head';
+import React, { ReactNode } from 'react'; // Add this import
 import "../styles/style.scss";
-// import "../src/components/dashboard/Login/login.css";
 
-
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps): ReactNode { // Adjust the return type
   return (
     <>
       <Head>
@@ -15,7 +14,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
 
       {/* <FullLayout> */}
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       {/* </FullLayout> */}
     </>
   );

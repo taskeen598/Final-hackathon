@@ -7,19 +7,18 @@ export class FakeNewsController {
   constructor(private readonly fakenewsService: FakeNewsService) { }
 
   @Get()
-  @UseGuards(JwtAuthGuard)
-  async findAll(@Req() req: any, @Query('page') page = 1, @Query('limit') limit = 10) {
+  async findAll(@Req() req: any, @Query('page') page = 1, @Query('limit') limit = 12) {
     return this.fakenewsService.findAll(req.user, page, limit);
   }
 
 
   @Get('analytics-stats')
   async getAnalyticsStats() {
-    return await this.fakenewsService.totalAnalyticsStats()
+    return await this.fakenewsService.getGraphs()
   }
   @Get('total-stats')
   async getTotalStats() {
-    return await this.fakenewsService.totalStats()
+    return await this.fakenewsService.totalNumbers()
   }
 
   @Post('give-reaction/:id')
@@ -29,7 +28,7 @@ export class FakeNewsController {
   }
 
   @Get('get-one/:id')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   findOne(@Param('id') id: string, @Req() req: any) {
     return this.fakenewsService.findOne(id, req.user);
   }
@@ -46,8 +45,8 @@ export class FakeNewsController {
     }
   }
 
-  // @Get('analytics')
-  // async getAnalytics() {
-  //   return await this.fakenewsService.getAnalytics()
-  // }
+  @Get('analytics')
+  async getAnalytics() {
+    return await this.fakenewsService.getAuthorAnalytics()
+  }
 }

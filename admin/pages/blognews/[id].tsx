@@ -1,18 +1,25 @@
-"use client"
+"use client";
 import FullLayout from "../../src/layouts/FullLayout";
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useFakeNewsStore from "../../zustand/fakenews.zustand";
 import { AiOutlineLike, AiFillLike } from "react-icons/ai";
+
+interface News {
+  title: string;
+  author: string;
+  published: string;
+  text: string;
+}
 
 export default function Page() {
   const router = useRouter();
   const { getSingleNews, singleNews, handleReaction } = useFakeNewsStore();
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState<boolean>(false);
 
   useEffect(() => {
     getSingleNews(router.query.id);
-  }, []);
+  }, [router.query.id]);
 
   const handleLikeClick = async () => {
     setIsLiked(!isLiked);
@@ -21,9 +28,9 @@ export default function Page() {
     getSingleNews(router.query.id);
   };
 
-  const formatDate = (dateString) => {
+  const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
-    const options = {
+    const options: object = {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
